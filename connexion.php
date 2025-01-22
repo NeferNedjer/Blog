@@ -38,7 +38,7 @@ if(isset($_POST['envoyer'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-<header class="container-fluid ">
+    <header class="container-fluid ">
         <nav class="row align-items-center justify-content-end" id="hightNav">
             <div class="col-3">
                 <img src="./assets/img/mon_blog-rb.png" alt="logo mon blog" class="rounded img-fluid">
@@ -68,28 +68,35 @@ if(isset($_POST['envoyer'])){
             </ul>
         </nav>
     </header>
-    <div class="container cont text-center">
-        <h1>connexion</h1>
-        <form action="" method="post">
-            <div class="form-group">
-            <label for="nom">Nom : </label><br>
-            <input type="text" name="nom" autocomplete="off" class="form-control-lg">
+    <main class="container main">
+        <div class="container cont text-center">
+            <h1 >connexion</h1>
+            <form action="" method="post">
+                <div class="form-group">
+                <label for="nom">Nom : </label><br>
+                <input type="text" name="nom" autocomplete="off" class="form-control-lg">
+                </div>
+                <br>
+                <div class="form-group">
+                <label for="mdp">Mot de passe : </label><br>
+                <input type="password" name="mdp" id="mdp" class="form-control-lg">
+                </div>
+                <br>
+                <div class="text-center">
+                <input type="submit" name="envoyer" value="Envoyer" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer class="container-fluid text-center py-3">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <p>@NeferCompany</p>
             </div>
-            <br>
-            <div class="form-group">
-            <label for="mdp">Mot de passe : </label><br>
-            <input type="password" name="mdp" id="mdp" class="form-control-lg">
+            <div class="col-12 col-md-6">
+                <p>contact@nefercompany.com</p>
             </div>
-            <br>
-            <div class="text-center">
-            <input type="submit" name="envoyer" value="Envoyer" class="btn-submit">
-            </div>
-        </form>
-    </div>
-    
-    <footer class="container-fluid">
-            <p>@NeferCompany</p>
+        </div>
     </footer>
-    
 </body>
 </html>

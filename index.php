@@ -45,8 +45,12 @@ include_once('./connect_bdd.php');
             </ul>
         </nav>
     </header>
-    
-        <div class="container" id="article">
+    <main class="container main">
+        
+        <div class="container text-center" id="article">
+        <h1  >bienvenue sur mon blog !</h1>
+        <br>
+        <br>
             <?php 
             $req = $bdd->query("SELECT posts.titre, posts.contenu, posts.date_publication, posts.img, posts.id_article, users.nom AS auteur FROM posts INNER JOIN users ON posts.id_user = users.id_user ORDER BY posts.date_publication DESC");
             while($posts = $req->fetch(PDO::FETCH_ASSOC)){
@@ -56,20 +60,30 @@ include_once('./connect_bdd.php');
                     <?php echo '<img src="data:img/Jpeg;base64,' . base64_encode($posts['img']) . '" alt="' . htmlspecialchars($posts['titre']) . '" class="rounded img-fluid">' ?>
                 </div>
                 <div class="container textArticle">
-                    <h2><?php echo htmlspecialchars($posts['titre']); ?></h2><br>
+                    <h2 ><?php echo htmlspecialchars($posts['titre']); ?></h2><br>
                     <p><?php echo $contenu ?></p><br>
-                    <p><?php echo htmlspecialchars($posts['auteur']) ?></p>
-                    <p><?php echo $posts['date_publication'] ?></p>
+                    <div class="d-flex justify-content-start gap-3">
+                        <p>Auteur : <?php echo htmlspecialchars($posts['auteur']) ?></p>
+                        <p>Publié le : <?php echo $posts['date_publication'] ?></p>
+                    </div>
                     <hr>
                 </div>
              <?php   
             }
             ?>
         </div>
-    
-    <footer class="container-fluid">
-            <p>@NeferCompany</p>
+    </main>
+    <footer class="container-fluid text-center py-3">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <p>@NeferCompany</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <p>contact@nefercompany.com</p>
+            </div>
+        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+
 </html>

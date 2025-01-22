@@ -10,12 +10,22 @@ $id_user = $_SESSION['id_user'];
 
 if(isset($_POST['publier'])){
     if(!empty($_POST['titre']) && !empty($_POST['contenu'])){
+
+        
+        $type = $_FILES['img']['type'];
+        $arrayType = ["jpeg" => 'image/jpg', "jpg" => 'image/jpg', "png" => 'image/png', "webp" => 'image/webp'];
+
+        if(in_array($type, $arrayType)){
+    
         $img = file_get_contents($_FILES['img']['tmp_name']);
         $titre = htmlspecialchars($_POST['titre']);
         $contenu = nl2br(htmlspecialchars($_POST['contenu']));
         $insertPost = $bdd->prepare('INSERT INTO posts(titre, contenu, id_user, img, date_publication) VALUES (:titre, :contenu, :id_user, :img, CURRENT_DATE)');
         $insertPost->execute(array(':titre' => $titre, ':contenu' => $contenu, ':id_user' => $id_user, ':img' => $img));
         header('Location:index.php');
+        }else{
+            echo "Le format n'est pas le bon !";
+        }
     }else{
         echo "Veuillez compléter tous les champs !";
     }
@@ -34,62 +44,69 @@ if(isset($_POST['publier'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-<header class="container-fluid ">
-        <nav class="row align-items-center justify-content-end" id="hightNav">
-            <div class="col-3">
-                <img src="./assets/img/mon_blog-rb.png" alt="logo mon blog" class="rounded img-fluid">
-            </div>
-            <div class="col-9 text-end">
+    <header class="container-fluid ">
+            <nav class="row align-items-center justify-content-end" id="hightNav">
+                <div class="col-3">
+                    <img src="./assets/img/mon_blog-rb.png" alt="logo mon blog" class="rounded img-fluid">
+                </div>
+                <div class="col-9 text-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <?php if(empty($_SESSION['mdp'])): ?>
+                                <a href="./inscription.php">Inscription</a>
+                                <a href="./connexion.php">Connexion</a>
+                            <?php else: ?>
+                                <a href="./deconnexion.php">Déconnexion</a>
+                            <?php endif; ?>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <nav class="row align-items-center justify-content-end text-end" id="lowNav">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
-                        <?php if(empty($_SESSION['mdp'])): ?>
-                            <a href="./inscription.php">Inscription</a>
-                            <a href="./connexion.php">Connexion</a>
-                        <?php else: ?>
-                            <a href="./deconnexion.php">Déconnexion</a>
+                        <?php if(isset($_SESSION['mdp'])): ?>
+                            <a href="index.php">Accueil</a>
+                            <a href="publier_articles.php">Publier</a>
+                            <a href="articles.php">Mes articles</a>
                         <?php endif; ?>
                     </li>
                 </ul>
-            </div>
-        </nav>
-        <nav class="row align-items-center justify-content-end text-end" id="lowNav">
-            <ul class="list-inline mb-0">
-                <li class="list-inline-item">
-                    <?php if(isset($_SESSION['mdp'])): ?>
-                        <a href="index.php">Accueil</a>
-                        <a href="publier_articles.php">Publier</a>
-                        <a href="articles.php">Mes articles</a>
-                    <?php endif; ?>
-                </li>
-            </ul>
-        </nav>
+            </nav>
     </header>
-    <div class="container text-center cont">
-        <h1>publier</h1>
-        <form  method="POST" action="" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="titre">Titre :</label><br>
-                <input type="text" name="titre" class="form-control-lg" id="titre" autocomplete="off" required><br><br>
-            </div>
-            <div class="form-group">
-            <label for="image">Photo</label>
-            <input type="file" class="form-control-file" name="img" id="img">
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="contenu">Contenu :</label>
-                <textarea name="contenu" class="form-control" id="contenu" required></textarea>
+    <main class="container main">
+        <div class="container text-center cont">
+            <h1>publier</h1>
+            <form  method="POST" action="" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="titre">Titre :</label><br>
+                    <input type="text" name="titre" class="form-control-lg" id="titre" autocomplete="off" required><br><br>
                 </div>
-            <br>
-            <div class="text-center">
-                <input type="submit" name="publier" value="publier" class="btn-submit">
+                <div class="form-group">
+                <label for="image">Photo</label>
+                <input type="file" class="form-control-file" name="img" id="img">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="contenu">Contenu :</label>
+                    <textarea name="contenu" class="form-control" id="contenu" required></textarea>
+                    </div>
+                <br>
+                <div class="text-center">
+                    <input type="submit" name="publier" value="publier" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </main>  
+    <footer class="container-fluid text-center py-3">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <p>@NeferCompany</p>
             </div>
-        </form>
-    </div>
-      
-    <footer class="container-fluid">
-            <p>@NeferCompany</p>
+            <div class="col-12 col-md-6">
+                <p>contact@nefercompany.com</p>
+            </div>
+        </div>
     </footer>
-    
 </body>
 </html>
