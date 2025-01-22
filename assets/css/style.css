@@ -1,0 +1,85 @@
+
+#lowNav {
+    
+    height: 5vw;
+    background-image: url('../img/background_header_blog.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+#hightNav {
+    
+    height: 10vw;
+    background-color: #000; 
+}
+
+ul> li> a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2vw;
+    padding: 1rem;   
+}
+
+ul> li> a:hover {
+   /* color: violet;*/
+    text-decoration: underline;
+}
+
+ul> li {
+    list-style-type: none;
+}
+
+body {
+    background: url('../img/fond_2_blog.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.form {
+    border: 1px solid #000;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    border-radius: 20px;
+    background-image: url('../img/background_header_blog.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.form> h2 {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+input {
+    padding: 5px 40px 5px 40px;
+    margin: 10px;
+}
+
+label {
+    padding: 20px;
+    color: #fff;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vw;
+    background-color: #000;
+    color: #fff;
+    
+}
+
+footer> p {
+    font-size: 1vw;
+}
+
+#article{
+    padding-top: 100px;
+}
+
