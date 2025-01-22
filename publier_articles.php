@@ -58,7 +58,7 @@ if(isset($_POST['publier'])){
                     <?php if(isset($_SESSION['mdp'])): ?>
                         <a href="index.php">Accueil</a>
                         <a href="publier_articles.php">Publier</a>
-                        <a href="articles.php">Modifier</a>
+                        <a href="articles.php">Mes articles</a>
                     <?php endif; ?>
                 </li>
             </ul>
@@ -66,7 +66,7 @@ if(isset($_POST['publier'])){
     </header>
     <div class="container">
         <h2>publier</h2>
-        <form  method="POST" action="" enctype="multipart/form-data">
+        <form  method="POST" action="" enctype="multipart/form-data" class=" row form text-center">
             <label for="titre">Titre</label>
             <input type="text" name="titre" id="titre" autocomplete="off" required><br><br>
             <label for="image">Photo</label>

@@ -62,7 +62,7 @@ if(isset($_POST['envoyer'])){
                     <?php if(isset($_SESSION['mdp'])): ?>
                         <a href="index.php">Accueil</a>
                         <a href="publier_articles.php">Publier</a>
-                        <a href="articles.php">Modifier</a>
+                        <a href="articles.php">Mes articles</a>
                     <?php endif; ?>
                 </li>
             </ul>

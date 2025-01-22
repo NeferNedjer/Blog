@@ -11,21 +11,29 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $getId = $_GET['id'];
     $recupArticle = $bdd->prepare('SELECT * FROM posts WHERE id_article = ?');
     $recupArticle->execute(array($getId));
-    if($recupArticle->rowCount() >0){
+    if($recupArticle->rowCount() > 0){
         $articleInfo = $recupArticle->fetch();
-        $titre = $recupArticle['titre'];
-        $contenu = str_replace('<br />', '', $recupArticle['contenu']);
+        $titre = $articleInfo['titre'];
+        $contenu = str_replace('<br />', '', $articleInfo['contenu']);
 
         if(isset($_POST['modifier'])){
             $titreModif = htmlspecialchars($_POST['titre']);
             $contenuModif = nl2br(htmlspecialchars($_POST['contenu']));
 
             $articleModif = $bdd->prepare('UPDATE posts SET titre = ?, contenu = ? WHERE id_article = ?');
-            header('Location:articles.php');
+            if($articleModif->execute(array($titreModif, $contenuModif, $getId))){
+                
+                header('Location: articles.php'); // Redirection après mise à jour
+                exit();
+            } else {
+                echo "Erreur lors de la mise à jour de l'article.";
+            }
         }
+    } else {
+        echo "Article non trouvé.";
     }
+    echo "ID de l'article non spécifié.";
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +70,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                     <?php if(isset($_SESSION['mdp'])): ?>
                         <a href="index.php">Accueil</a>
                         <a href="publier_articles.php">Publier</a>
-                        <a href="articles.php">Modifier</a>
+                        <a href="articles.php">Mes articles</a>
                     <?php endif; ?>
                 </li>
             </ul>
@@ -70,17 +78,16 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     </header>
     <div class="container">
         <h2>Modifier</h2>
-        <form  method="POST" action="" enctype="multipart/form-data" class="text-center form">
+        <form  method="POST" action=""  class=" row text-center form">
             <label for="titre">Titre</label>
-            <input type="text" name="titre" id="titre" autocomplete="off" value="<?= $titre; ?>" required><br><br>
-            <label for="image">Photo</label>
-            <input type="file" name="img" id="img"><br><br>
+            <input type="text" name="titre" id="titre" autocomplete="off" value="<?= $titre; ?>"><br><br>
+        
             <label for="contenu">contenu</label>
-            <textarea name="contenu" id="contenu" required>
+            <textarea name="contenu" id="contenu">
                 <?= $contenu; ?>
             </textarea><br>
             <br>
-            <input type="submit" name="publier" value="modifier" class="btn_publier">
+            <input type="submit" name="modifier" value="modifier" class="btn_publier">
         </form>
     </div>
       

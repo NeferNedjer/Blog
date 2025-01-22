@@ -1,6 +1,8 @@
 <?php
 session_start();
 include_once('./connect_bdd.php');
+
+
 ?>
 
 <!DOCTYPE html>
@@ -45,14 +47,13 @@ include_once('./connect_bdd.php');
     </header>
     <div class="container ">
         <h2>Mes Articles :</h2>
-        <?php $req = $bdd->query("SELECT posts.titre, posts.date_publication, posts.id_article, users.nom AS auteur FROM posts INNER JOIN users ON posts.id_user = users.id_user    ORDER BY posts.date_publication DESC");
-            while($posts = $req->fetch(PDO::FETCH_ASSOC)){ ?>
-                <p><?php echo htmlspecialchars($posts['titre']); ?> <a href="./modifier_article.php?id="><img src="./assets/img/cercle.webp" alt="crayon vert"></a><a href="supprimer_article.php?id=<?= $posts['id_article']; ?>"><img src="./assets/img/poubelle.webp" alt="poubelle rouge"></a></p>
-
-
-        <?php   
-        }
-        ?>
+        <?php
+        $id_user = $_SESSION['id_user'];
+        $req = $bdd->prepare("SELECT posts.titre, posts.date_publication, posts.id_article, users.nom AS auteur FROM posts INNER JOIN users ON posts.id_user = users.id_user WHERE posts.id_user = ? ORDER BY posts.date_publication DESC");
+        $req->execute(array($id_user));
+        while($posts = $req->fetch(PDO::FETCH_ASSOC)){ ?>
+            <p><?php echo htmlspecialchars($posts['titre']); ?> <a href="./modifier_article.php?id=<?=$posts['id_article'];?>"><img src="./assets/img/cercle.webp" alt="crayon vert"></a><a href="supprimer_article.php?id=<?= $posts['id_article']; ?>"><img src="./assets/img/poubelle.webp" alt="poubelle rouge"></a></p>
+        <?php } ?>
     </div>
     
     <footer class="container-fluid">
