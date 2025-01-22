@@ -45,8 +45,8 @@ include_once('./connect_bdd.php');
             </ul>
         </nav>
     </header>
-    <div class="container ">
-        <h2>Mes Articles :</h2>
+    <div class="container cont">
+        <h1>Mes Articles :</h1>
         <?php
         $id_user = $_SESSION['id_user'];
         $req = $bdd->prepare("SELECT posts.titre, posts.date_publication, posts.id_article, users.nom AS auteur FROM posts INNER JOIN users ON posts.id_user = users.id_user WHERE posts.id_user = ? ORDER BY posts.date_publication DESC");

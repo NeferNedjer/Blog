@@ -15,6 +15,7 @@ if(isset($_POST['envoyer'])){ // Vérifie si le formulaire a été envoyé
             $insertUser = $bdd->prepare('INSERT INTO users(nom, mdp, email, date_inscription) VALUE(?, ?, ?, CURRENT_DATE)');
             if($insertUser->execute(array($nom, $mdp, $mail))){
                 echo "Inscription réussie !";
+                header('Location:connexion.php');
             }else{
                 echo "erreur lors de l'inscription !";
             }
@@ -68,19 +69,29 @@ if(isset($_POST['envoyer'])){ // Vérifie si le formulaire a été envoyé
             </ul>
         </nav>
     </header>
-    <div class="container text-center">
-        <fieldset>
-            <legend>inscription</legend>
-            <form action="" method="post" class="text-center form">
-                <label for="nom">Nom : </label>
-                <input type="text" name="nom" autocomplete="off"><br>
-                <label for="mdp">Mot de passe : </label>
-                <input type="password" name="mdp" id="mdp"><br>
-                <label for="email">adresse mail :</label>
-                <input type="email" name="email" id="email"><br>
-                <input type="submit" name="envoyer" value="Envoyer" class="envoyer">
-            </form>
-        </fieldset>
+    <div class="container cont text-center">
+        <h1>inscription</h1>    
+        <form action="" method="post" >
+            <div class="form-group">
+                <label for="nom">Nom :</label><br>
+                <input type="text" name="nom" autocomplete="off" class="form-control-lg">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="mdp">Mot de passe : </label><br>
+                <input type="password" name="mdp" id="mdp" class="form-control-lg">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="email">adresse mail :</label><br>
+                <input type="email" name="email" id="email" autocomplete="off" class="form-control-lg">
+            </div>
+            <br>
+            <div class="text-center">
+            <input type="submit" name="envoyer" value="Envoyer" class="btn-submit">
+            </div>
+        </form>
+
     </div>
     
     <footer class="container-fluid">

@@ -68,14 +68,22 @@ if(isset($_POST['envoyer'])){
             </ul>
         </nav>
     </header>
-    <div class="container form text-center">
-        <h2>connexion</h2>
+    <div class="container cont text-center">
+        <h1>connexion</h1>
         <form action="" method="post">
-            <label for="nom">Nom : </label>
-            <input type="text" name="nom" autocomplete="off"><br>
-            <label for="mdp">Mot de passe : </label>
-            <input type="password" name="mdp" id="mdp"><br>
-            <input type="submit" name="envoyer" value="Envoyer" class="envoyer">
+            <div class="form-group">
+            <label for="nom">Nom : </label><br>
+            <input type="text" name="nom" autocomplete="off" class="form-control-lg">
+            </div>
+            <br>
+            <div class="form-group">
+            <label for="mdp">Mot de passe : </label><br>
+            <input type="password" name="mdp" id="mdp" class="form-control-lg">
+            </div>
+            <br>
+            <div class="text-center">
+            <input type="submit" name="envoyer" value="Envoyer" class="btn-submit">
+            </div>
         </form>
     </div>
     

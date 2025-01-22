@@ -64,17 +64,26 @@ if(isset($_POST['publier'])){
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <h2>publier</h2>
-        <form  method="POST" action="" enctype="multipart/form-data" class=" row form text-center">
-            <label for="titre">Titre</label>
-            <input type="text" name="titre" id="titre" autocomplete="off" required><br><br>
+    <div class="container text-center cont">
+        <h1>publier</h1>
+        <form  method="POST" action="" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="titre">Titre :</label><br>
+                <input type="text" name="titre" class="form-control-lg" id="titre" autocomplete="off" required><br><br>
+            </div>
+            <div class="form-group">
             <label for="image">Photo</label>
-            <input type="file" name="img" id="img"><br><br>
-            <label for="contenu">contenu</label>
-            <textarea name="contenu" id="contenu" required></textarea><br>
+            <input type="file" class="form-control-file" name="img" id="img">
+            </div>
             <br>
-            <input type="submit" name="publier" value="publier" class="btn_publier">
+            <div class="form-group">
+                <label for="contenu">Contenu :</label>
+                <textarea name="contenu" class="form-control" id="contenu" required></textarea>
+                </div>
+            <br>
+            <div class="text-center">
+                <input type="submit" name="publier" value="publier" class="btn-submit">
+            </div>
         </form>
     </div>
       
