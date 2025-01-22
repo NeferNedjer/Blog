@@ -77,18 +77,23 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
         </nav>
     </header>
     <main class="container main">
-        <div class="container">
+        <div class="container text-center cont">
             <h1>Modifier</h1>
             <form  method="POST" action=""  class=" row text-center form">
-                <label for="titre">Titre</label>
-                <input type="text" name="titre" id="titre" autocomplete="off" value="<?= $titre; ?>"><br><br>
-            
-                <label for="contenu">contenu</label>
-                <textarea name="contenu" id="contenu">
-                    <?= $contenu; ?>
-                </textarea><br>
+                <div class="form-group">
+                    <label for="titre">Titre</label>
+                    <input type="text" name="titre" class="form-control" id="titre" autocomplete="off" value="<?= $titre; ?>"><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="contenu">contenu</label>
+                    <textarea name="contenu" class="form-control" id="contenu">
+                        <?= $contenu; ?>
+                    </textarea>
+                </div>
                 <br>
+                <div class="text-center">
                 <input type="submit" name="modifier" value="modifier" class="btn btn-primary">
+                </div>
             </form>
         </div>
     </main> 
