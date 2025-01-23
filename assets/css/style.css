@@ -97,6 +97,10 @@ footer> p {
     padding-top: 100px;
 }
 
+.textArticle {
+    margin-top: 50px;
+}
+
 
 /* Media queries pour les appareils mobiles */
 @media (max-width: 768px) {
