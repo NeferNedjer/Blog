@@ -1,29 +1,56 @@
 
 #lowNav {
     
-    height: 5vw;
-    background-image: url('../img/background_header_blog.webp');
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: auto;
+    /*background: linear-gradient(90deg, rgba(211,217,218,1) 0%, rgba(255,255,255,1) 100%);*/
+    background: linear-gradient(90deg, rgba(207,212,213,1) 0%, rgba(255,255,255,1) 70%);
+    /*border-bottom: 1px solid #999;*/
+    /*font-family: fantasy;*/
+    padding: 1rem 0;
+    
     
 }
 
 #hightNav {
     
-    height: 10vw;
-    background-color: #000; 
+    height: auto;
+    background-color: #222; 
+    padding: 1rem 0;
+    /*font-family: fantasy;*/
+}
+
+#lowNav> ul> li> a {
+    color: #333;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#lowNav> ul> li> a:hover  {
+    color: #b1afaf;
+    text-decoration: underline;
+}
+
+h1, h2 {
+    font-family: fantasy;
+    text-transform: uppercase;
+}
+
+.logo {
+    color: #fff;
+    margin-left: 50px;
+    font-family: fantasy;
 }
 
 ul> li> a {
     color: #fff;
     text-decoration: none;
-    font-size: 2vw;
+    font-size: 1.3vw;
     padding: 1rem;   
 }
 
 ul> li> a:hover {
-   /* color: violet;*/
-    text-decoration: underline;
+    color: #cfcece;
+    
 }
 
 ul> li {
@@ -46,12 +73,6 @@ body {
 .cont{
     margin-top: 100px;
 }
-
-h1, h2 {
-    text-transform: uppercase;
-}
-
-
 
 textarea {
     height: 400px;
@@ -80,7 +101,7 @@ footer> p {
 /* Media queries pour les appareils mobiles */
 @media (max-width: 768px) {
     ul> li> a {
-        font-size: 4vw;
+        font-size: 2.5vw;
     }
 
     .cont {
@@ -89,5 +110,14 @@ footer> p {
 
     textarea {
         height: 200px;
+    }
+
+    #hightNav, #lowNav {
+        text-align: center;
+    }
+
+    .logo {
+        margin-left: 0;
+        text-align: center;
     }
 }

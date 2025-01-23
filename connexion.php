@@ -38,19 +38,20 @@ if(isset($_POST['envoyer'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <header class="container-fluid ">
-        <nav class="row align-items-center justify-content-end" id="hightNav">
-            <div class="col-3">
-                <img src="./assets/img/mon_blog-rb.png" alt="logo mon blog" class="rounded img-fluid">
+    <header class="container-fluid">
+        <nav class="row align-items-center justify-content-between" id="hightNav">
+            <div class="col-6 col-md-3">
+                <h1 class="logo">Mon Blog Perso</h1>
+                <!--<img src="./assets/img/logo.webp" alt="logo mon blog" class="rounded img-fluid">-->
             </div>
-            <div class="col-9 text-end">
+            <div class="col-6 col-md-9 text-end">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
                         <?php if(empty($_SESSION['mdp'])): ?>
-                            <a href="./inscription.php">Inscription</a>
-                            <a href="./connexion.php">Connexion</a>
+                            <a href="./inscription.php" class="btn btn-primary">Inscription</a>
+                            <a href="./connexion.php" class="btn btn-secondary">Connexion</a>
                         <?php else: ?>
-                            <a href="./deconnexion.php">Déconnexion</a>
+                            <a href="./deconnexion.php" class="btn btn-danger">Déconnexion</a>
                         <?php endif; ?>
                     </li>
                 </ul>
@@ -60,9 +61,9 @@ if(isset($_POST['envoyer'])){
             <ul class="list-inline mb-0">
                 <li class="list-inline-item">
                     <?php if(isset($_SESSION['mdp'])): ?>
-                        <a href="index.php">Accueil</a>
-                        <a href="publier_articles.php">Publier</a>
-                        <a href="articles.php">Mes articles</a>
+                        <a href="index.php" class="btn btn-link">Accueil</a>
+                        <a href="publier_articles.php" class="btn btn-link">Publier</a>
+                        <a href="articles.php" class="btn btn-link">Mes articles</a>
                     <?php endif; ?>
                 </li>
             </ul>
