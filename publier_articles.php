@@ -39,7 +39,7 @@ if(isset($_POST['publier'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Publier</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -48,7 +48,6 @@ if(isset($_POST['publier'])){
         <nav class="row align-items-center justify-content-between" id="hightNav">
             <div class="col-6 col-md-3">
                 <h1 class="logo">Mon Blog Perso</h1>
-                <!--<img src="./assets/img/logo.webp" alt="logo mon blog" class="rounded img-fluid">-->
             </div>
             <div class="col-6 col-md-9 text-end">
                 <ul class="list-inline mb-0">
@@ -67,6 +66,9 @@ if(isset($_POST['publier'])){
             <ul class="list-inline mb-0">
                 <li class="list-inline-item">
                     <?php if(isset($_SESSION['mdp'])): ?>
+                        <div class="container text-start">
+                        <p>Bonjour <?= $_SESSION['nom'] ?> !</p>
+                        </div>
                         <a href="index.php" class="btn btn-link">Accueil</a>
                         <a href="publier_articles.php" class="btn btn-link">Publier</a>
                         <a href="articles.php" class="btn btn-link">Mes articles</a>

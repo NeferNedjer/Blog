@@ -24,7 +24,7 @@ $totalPage = ceil($totalArticle / $nombreArticle);
 <head>
     <meta charset="UTF-8mb4">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Accueil</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -51,6 +51,9 @@ $totalPage = ceil($totalArticle / $nombreArticle);
             <ul class="list-inline mb-0">
                 <li class="list-inline-item">
                     <?php if(isset($_SESSION['mdp'])): ?>
+                        <div class="container text-start">
+                        <p>Bonjour <?= $_SESSION['nom'] ?> !</p>
+                        </div>
                         <a href="index.php" class="btn btn-link">Accueil</a>
                         <a href="publier_articles.php" class="btn btn-link">Publier</a>
                         <a href="articles.php" class="btn btn-link">Mes articles</a>
@@ -93,11 +96,11 @@ $totalPage = ceil($totalArticle / $nombreArticle);
         <div class="text-center">
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
-                    <?php for($i = 1; $i <= $totalPage; $i++): ?>
+                    <?php for($i = 1; $i <= $totalPage; $i++){ ?>
                         <li class="page-item <?php if($i == $page) echo 'active'; ?>">
                             <a class="page-link" href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                         </li>
-                    <?php endfor; ?>
+                    <?php } ?>
                 </ul>
             </nav>
             <a href="" >Haut de page</a>
