@@ -2,6 +2,20 @@
 session_start();
 include_once('./connect_bdd.php');
 
+$nombreArticle = 5;
+
+if(isset($_GET['page'])){
+    $page = (int)$_GET['page']; // si 'page' existe on le converti en entier pour éviter les string
+}else{
+    $page = 1;
+}
+
+$offset = ($page-1) * $nombreArticle;
+
+$totalArticleReq = $bdd->query('SELECT COUNT(*) as total FROM posts');
+$totalArticle = $totalArticleReq->fetch(PDO::FETCH_ASSOC)['total'];
+$totalPage = ceil($totalArticle / $nombreArticle);
+
 ?>
 
 
@@ -19,7 +33,6 @@ include_once('./connect_bdd.php');
         <nav class="row align-items-center justify-content-between" id="hightNav">
             <div class="col-6 col-md-3">
                 <h1 class="logo">Mon Blog Perso</h1>
-                <!--<img src="./assets/img/logo.webp" alt="logo mon blog" class="rounded img-fluid">-->
             </div>
             <div class="col-6 col-md-9 text-end">
                 <ul class="list-inline mb-0">
@@ -53,7 +66,11 @@ include_once('./connect_bdd.php');
         <br>
         <br>
             <?php 
-            $req = $bdd->query("SELECT posts.titre, posts.contenu, posts.date_publication, posts.img, posts.id_article, users.nom AS auteur FROM posts INNER JOIN users ON posts.id_user = users.id_user ORDER BY posts.date_publication DESC");
+            $req = $bdd->prepare("SELECT posts.titre, posts.contenu, posts.date_publication, posts.img, posts.id_article, users.nom AS auteur FROM posts INNER JOIN users ON posts.id_user = users.id_user ORDER BY posts.date_publication DESC LIMIT :limit OFFSET :offset");
+            $req->bindParam(':limit', $nombreArticle, PDO::PARAM_INT);
+            $req->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $req->execute();
+
             while($posts = $req->fetch(PDO::FETCH_ASSOC)){
                 $contenu =str_replace('<br />', '',($posts['contenu']));
                  ?>
@@ -73,7 +90,18 @@ include_once('./connect_bdd.php');
             }
             ?>
         </div>
-        <div></div>
+        <div class="text-center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <?php for($i = 1; $i <= $totalPage; $i++): ?>
+                        <li class="page-item <?php if($i == $page) echo 'active'; ?>">
+                            <a class="page-link" href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                        </li>
+                    <?php endfor; ?>
+                </ul>
+            </nav>
+            <a href="" >Haut de page</a>
+        </div>
     </main>
     <footer class="container-fluid text-center py-3">
         <div class="row">

@@ -81,7 +81,7 @@ if(isset($_POST['publier'])){
             <form  method="POST" action="" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="titre">Titre :</label><br>
-                    <input type="text" name="titre" class="form-control-lg" id="titre" autocomplete="off" required><br><br>
+                    <input type="text" name="titre" class="form-control" id="titre" autocomplete="off" required><br><br>
                 </div>
                 <div class="form-group">
                 <label for="image">Photo</label>

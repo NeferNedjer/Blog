@@ -14,7 +14,7 @@
 #hightNav {
     
     height: auto;
-    background-color: #222; 
+    background-color: #333; 
     padding: 1rem 0;
     /*font-family: fantasy;*/
 }
@@ -84,7 +84,7 @@ footer {
     justify-content: center;
     align-items: center;
      
-    background-color: #000;
+    background-color: #333;
     color: #fff;
     
 }
