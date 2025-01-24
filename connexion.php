@@ -41,7 +41,7 @@ if(isset($_POST['envoyer'])){
     <header class="container-fluid">
         <nav class="row align-items-center justify-content-between" id="hightNav">
             <div class="col-6 col-md-3">
-                <h1 class="logo">Mon Blog Perso</h1>
+                <a href="index.php"><h1 class="logo">Mon Blog Perso</h1></a>
                 <!--<img src="./assets/img/logo.webp" alt="logo mon blog" class="rounded img-fluid">-->
             </div>
             <div class="col-6 col-md-9 text-end">

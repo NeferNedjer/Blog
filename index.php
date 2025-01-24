@@ -32,7 +32,7 @@ $totalPage = ceil($totalArticle / $nombreArticle);
 <header class="container-fluid">
         <nav class="row align-items-center justify-content-between" id="hightNav">
             <div class="col-6 col-md-3">
-                <h1 class="logo">Mon Blog Perso</h1>
+                <a href="index.php"><h1 class="logo">Mon Blog Perso</h1></a>
             </div>
             <div class="col-6 col-md-9 text-end">
                 <ul class="list-inline mb-0">
@@ -96,11 +96,13 @@ $totalPage = ceil($totalArticle / $nombreArticle);
         <div class="text-center">
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
+                    <li class="page-item"><a class="page-link" href="index.php?page=<?php if ($page > 1){echo($page - 1);}else{echo($page = 1);}?>">Previous</a></li>
                     <?php for($i = 1; $i <= $totalPage; $i++){ ?>
                         <li class="page-item <?php if($i == $page) echo 'active'; ?>">
                             <a class="page-link" href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                         </li>
                     <?php } ?>
+                    <li class="page-item"><a class="page-link" href="index.php?page=<?php echo($page + 1);?>">Next</a></li>
                 </ul>
             </nav>
             <a href="" >Haut de page</a>

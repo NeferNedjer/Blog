@@ -49,7 +49,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     <header class="container-fluid">
         <nav class="row align-items-center justify-content-between" id="hightNav">
             <div class="col-6 col-md-3">
-                <h1 class="logo">Mon Blog Perso</h1>
+                <a href="index.php"><h1 class="logo">Mon Blog Perso</h1></a>
             </div>
             <div class="col-6 col-md-9 text-end">
                 <ul class="list-inline mb-0">
