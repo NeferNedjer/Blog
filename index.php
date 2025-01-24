@@ -109,13 +109,13 @@ $totalPage = ceil($totalArticle / $nombreArticle);
                     <li class="page-item"><a class="page-link" href="index.php?page=<?php if ($page < $totalPage){echo($page + 1);}else{echo($totalPage);}?>">Next</a></li>
                 </ul>
             </nav>
-            <a href="" >Haut de page</a>
+            <a href="" class="nav-link">Haut de page</a>
         </div>
     </main>
     <footer class="container-fluid text-center py-3">
         <div class="row">
             <div class="col-12 col-md-6">
-                <p>@NeferCompany</p>
+                <p>copyright@NeferCompany</p>
             </div>
             <div class="col-12 col-md-6">
                 <p>contact@nefercompany.com</p>
