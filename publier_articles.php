@@ -13,7 +13,7 @@ if(isset($_POST['publier'])){
 
         
         $type = $_FILES['img']['type'];
-        $arrayType = ["jpeg" => 'image/jpg', "jpg" => 'image/jpg', "png" => 'image/png', "webp" => 'image/webp'];
+        $arrayType = ["jpeg" => 'image/jpeg', "jpg" => 'image/jpg', "png" => 'image/png', "webp" => 'image/webp'];
 
         if(in_array($type, $arrayType)){
     
@@ -39,6 +39,7 @@ if(isset($_POST['publier'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page de publication des articles">
     <title>Publier</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -86,7 +87,7 @@ if(isset($_POST['publier'])){
                     <input type="text" name="titre" class="form-control" id="titre" autocomplete="off" required><br><br>
                 </div>
                 <div class="form-group">
-                <label for="image">Photo</label>
+                <label for="image">Photo (jpeg, jpg, png ,webp)</label>
                 <input type="file" class="form-control-file" name="img" id="img">
                 </div>
                 <br>
