@@ -16,6 +16,8 @@ $totalArticleReq = $bdd->query('SELECT COUNT(*) as total FROM posts');
 $totalArticle = $totalArticleReq->fetch(PDO::FETCH_ASSOC)['total'];
 $totalPage = ceil($totalArticle / $nombreArticle);
 
+
+
 ?>
 
 
@@ -74,6 +76,8 @@ $totalPage = ceil($totalArticle / $nombreArticle);
             $req->bindParam(':offset', $offset, PDO::PARAM_INT);
             $req->execute();
 
+           
+
             while($posts = $req->fetch(PDO::FETCH_ASSOC)){
                 $contenu =str_replace('<br />', '',($posts['contenu']));
                  ?>
@@ -102,7 +106,7 @@ $totalPage = ceil($totalArticle / $nombreArticle);
                             <a class="page-link" href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
                         </li>
                     <?php } ?>
-                    <li class="page-item"><a class="page-link" href="index.php?page=<?php echo($page + 1);?>">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="index.php?page=<?php if ($page < $totalPage){echo($page + 1);}else{echo($totalPage);}?>">Next</a></li>
                 </ul>
             </nav>
             <a href="" >Haut de page</a>
