@@ -82,10 +82,10 @@ $totalPage = ceil($totalArticle / $nombreArticle);
             while($posts = $req->fetch(PDO::FETCH_ASSOC)){
                 $contenu =str_replace('<br />', '',($posts['contenu']));
                  ?>
-                <div class="container text-start photoArticle">
+                <div class="container text-center mt-5 ">
                     <?php echo '<img src="data:img/Jpeg;base64,' . base64_encode($posts['img']) . '" alt="' . htmlspecialchars($posts['titre']) . '"width ="600" height="200" class="rounded img-fluid">' ?>
                 </div>
-                <div class="container text-start textArticle">
+                <div class="container text-center textArticle">
                     <h2 ><?php echo htmlspecialchars($posts['titre']); ?></h2><br>
                     <p><?php echo $contenu ?></p><br>
                     <div class="d-flex justify-content-start gap-3">

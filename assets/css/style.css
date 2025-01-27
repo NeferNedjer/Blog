@@ -70,6 +70,7 @@ body {
 }
 
 
+
 .cont{
     margin-top: 100px;
 }
@@ -102,7 +103,7 @@ footer> p {
 }
 
 
-/* Media queries pour les appareils mobiles */
+
 @media (max-width: 768px) {
     ul> li> a {
         font-size: 2.5vw;
